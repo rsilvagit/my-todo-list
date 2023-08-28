@@ -2,6 +2,7 @@ import React from 'react'
 import { Outlet, useNavigate, useLocation} from 'react-router-dom'
 import { HeaderComponent } from '../components/header/HeaderComponent'
 import ButtonComponent from '../components/button/ButtonComponent'
+import * as Styled from "./AppLayout.style";
 
 export const Layout = () => {
 
@@ -13,18 +14,18 @@ export const Layout = () => {
         navigate(route);
     }
   return (
-    <div className='Layout'>
+    <Styled.Layout>
         <HeaderComponent/>
-        <main className ='Main'>
-            <div className='ActionContainer'>
+        <Styled.Main>
+            <Styled.ActionContainer>
                <ButtonComponent onClick={handleClick}>
                 { location.pathname.includes('/todo') ? 'Ver Tarefas' : 'Nova Tarefa'}
                </ButtonComponent>
-            </div>
-            <section className='MainContainer'>
+            </Styled.ActionContainer>
+            <Styled.MainContrainer>
                 <Outlet/>
-            </section>
-        </main>
-    </div>
+            </Styled.MainContrainer>
+        </Styled.Main>
+    </Styled.Layout>
   )
 }
