@@ -26,13 +26,13 @@ const CardComponent = ({ todo }) => {
             <Styled.Title>{title}</Styled.Title>
             <Styled.Description>{description}</Styled.Description>
             <Styled.ActionsContainer>
-                <ButtonComponent bg={'#fffff'} color={StyleUtils.Colors.primary} onClick={handleEdit}>
+                <ButtonComponent bg={'#fffff'} color={StyleUtils.Colors.primary} simetric={true} onClick={handleEdit}>
                     <MdEdit />
                 </ButtonComponent>
-                <ButtonComponent bg={'#ffffff'} color={StyleUtils.Colors.danger} onClick={handleDelete}>
+                <ButtonComponent bg={'#ffffff'} color={StyleUtils.Colors.danger} simetric={true} onClick={handleDelete}>
                     <MdDelete />
                 </ButtonComponent>
-                <ButtonComponent bg={'#fffff'} color={StyleUtils.Colors.sucess} onClick={changeStatus}>
+                <ButtonComponent bg={'#fffff'} color={StyleUtils.Colors.sucess} simetric={true} onClick={changeStatus}>
                     <MdAutorenew />
                 </ButtonComponent>
             </Styled.ActionsContainer>
