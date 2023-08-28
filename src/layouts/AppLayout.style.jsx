@@ -6,15 +6,15 @@ export const Layout = styled.div`
     height: 100%;
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
+    gap: 0.625rem;
     background: #EFEFEF;
 `;
 export const Main = styled.div`
     display: flex;
-    padding: 16px;
+    padding: 1rem;
     flex-direction: column;
     align-items: flex-start;
-    gap: 16px;
+    gap: 1rem;
     flex: 1 0 0;
     align-self: stretch;
 `;
@@ -25,7 +25,7 @@ export const ActionContainer = styled.div`
     align-items: center;
     gap: 10px;
     align-self: stretch;
-    border-radius: 10px;
+    border-radius: 5px;
     background: #FFF;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 `;

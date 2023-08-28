@@ -1,4 +1,7 @@
 import styled from 'styled-components'
+import { StyleUtils } from '../../utils/style'
+
+const colors = StyleUtils.Colors;
 
 export const Header = styled.header`
     display: flex;
@@ -7,25 +10,44 @@ export const Header = styled.header`
     align-items: center;
     align-self: stretch;
     border-bottom: 1px solid #666;
+    width: 100%;
+
 `
 export const Logo = styled.h1`
-    display: flex;
-    align-items: center;
+    
     color: #877777;
     font-size: 24px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
     text-transform: uppercase;
+    span {
+        color: ${colors.primary};
+    }
 `
 export const ProfileContainer = styled.div`
-    display: flex;
-    align-items: center;
-    gap: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  p {
+    color: #000;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+  }
 `
 export const ProfileIcon = styled.div`
     width: 32px;
     height: 32px;
     border-radius: 32px;
     background: #393939;
-`
+
+    color: #FFFFFF;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    `

@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 import PropTypes from 'prop-types'
 import * as Styled from './FormComponent.style'
 
+
 export const FormComponent = ({ todo }) => {
     const { register,
         handleSubmit,
@@ -29,11 +30,11 @@ export const FormComponent = ({ todo }) => {
                 {!todo ? 'Criar uma tarefa' : `Editar tarefa ${todo.title}`}
             </Styled.FormTitle>
 
-            <Styled.InputContainer>
+            <Styled.InputsContainer>
 
                 <Styled.InputGroup>
-                    <label htmlFor="title">Título</label>
-                    <input
+                    <Styled.Label htmlFor="title">Título</Styled.Label>
+                    <Styled.Input
                         type='text'
                         id='title'
                         {...register("title", {
@@ -41,12 +42,12 @@ export const FormComponent = ({ todo }) => {
                         })}
                     />
                     {errors.title &&
-                        <p>{errors.title.message}</p>
+                        <Styled.ErrorText>{errors.title.message}</Styled.ErrorText>
                     }
                 </Styled.InputGroup>
                 <Styled.InputGroup>
-                    <label htmlFor="description">Descrição</label>
-                    <textarea
+                    <Styled.Label>Descrição</Styled.Label>
+                    <Styled.TextArea
                         id="description"
                         cols="30"
                         rows="10"
@@ -58,16 +59,16 @@ export const FormComponent = ({ todo }) => {
                                     message: 'Esse campo possui tamanho máximo de 50 caracteres'
                                 }
                             })}>
-                    </textarea>
+                    </Styled.TextArea>
 
                     <Styled.CounterContainer>
                         { watch('description')?.length || 0} de 50 caracteres
                     </Styled.CounterContainer>
                     {errors.description &&
-                        <p>{errors.description.message}</p>
+                        <Styled.ErrorText>{errors.description.message}</Styled.ErrorText>
                     }
                 </Styled.InputGroup>
-            </Styled.InputContainer>
+            </Styled.InputsContainer>
 
             <ButtonComponent type='submit'>Salvar</ButtonComponent>
 
@@ -76,7 +77,7 @@ export const FormComponent = ({ todo }) => {
 }
 
 FormComponent.propTypes = {
-    tod: PropTypes.shape({
+    todo: PropTypes.shape({
         id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
         description: PropTypes.string,
