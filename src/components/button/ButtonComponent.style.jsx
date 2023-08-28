@@ -6,7 +6,7 @@ const colors = StyleUtils.Colors;
 
 export const Button = styled.button`
     display: flex;
-    padding: ${({$simetric})=>$simetric ? '8px': "8px 24px"};
+    padding: ${({$simetric})=> $simetric ? '8px': "8px 24px"};
     justify-content: center;
     align-items: center;
     gap: 10px;
