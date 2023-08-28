@@ -24,14 +24,14 @@ export const FormComponent = ({ todo }) => {
     }, []);
 
     return (
-        <form className="FormTodo" onSubmit={handleSubmit(onSubmit)}>
-            <legend className="FormTitle">
+        <Styled.FormTodo onSubmit={handleSubmit(onSubmit)}>
+            <Styled.FormTitle>
                 {!todo ? 'Criar uma tarefa' : `Editar tarefa ${todo.title}`}
-            </legend>
+            </Styled.FormTitle>
 
-            <div className="InputContainer">
+            <Styled.InputContainer>
 
-                <div className="InputGroup">
+                <Styled.InputGroup>
                     <label htmlFor="title">Título</label>
                     <input
                         type='text'
@@ -43,8 +43,8 @@ export const FormComponent = ({ todo }) => {
                     {errors.title &&
                         <p>{errors.title.message}</p>
                     }
-                </div>
-                <div className="InputGroup">
+                </Styled.InputGroup>
+                <Styled.InputGroup>
                     <label htmlFor="description">Descrição</label>
                     <textarea
                         id="description"
@@ -60,18 +60,18 @@ export const FormComponent = ({ todo }) => {
                             })}>
                     </textarea>
 
-                    <div className="CounterContainer">
+                    <Styled.CounterContainer>
                         { watch('description')?.length || 0} de 50 caracteres
-                    </div>
+                    </Styled.CounterContainer>
                     {errors.description &&
                         <p>{errors.description.message}</p>
                     }
-                </div>
-            </div>
+                </Styled.InputGroup>
+            </Styled.InputContainer>
 
             <ButtonComponent type='submit'>Salvar</ButtonComponent>
 
-        </form >
+        </Styled.FormTodo>
     )
 }
 
