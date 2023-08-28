@@ -1,19 +1,20 @@
 import React from 'react'
 import { MdPerson } from 'react-icons/md'
+import * as Styled from './headerComponent.style'
 
 
 export const HeaderComponent = () => {
   return (
-   <header className="Header">
-    <h1 className="Logo">
+   <Styled.Header>
+    <Styled.Logo>
         My<span>Todo</span>App
-    </h1>
-    <div className="ProfileContainer">
-        <div className="ProfileIcon">
+    </Styled.Logo>
+    <Styled.ProfileContainer>
+        <Styled.ProfileIcon>
             <MdPerson/>
-        </div>
+        </Styled.ProfileIcon>
         <p>Rafael Silva</p>
-    </div>
-   </header>
+    </Styled.ProfileContainer>
+   </Styled.Header>
   )
 }
