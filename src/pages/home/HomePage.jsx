@@ -1,11 +1,12 @@
 import CardComponent from '../../components/card/CardComponent'
-import { todos } from '../todo/ToDoPage'
+import { MockUtils } from '../../utils/mock'
+
 
 export const HomePage = () => {
     return (
         <div className="HomeContainer">
             <div className="CardsContainer">
-                 {todos.map(todo => 
+                 {MockUtils.Todos.map(todo => 
                     <CardComponent todo={todo} key={todo.id} />
                 )}
             </div>
