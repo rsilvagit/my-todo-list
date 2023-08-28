@@ -4,6 +4,7 @@ import ButtonComponent from '../button/ButtonComponent'
 import { MdEdit, MdDelete, MdAutorenew } from 'react-icons/md'
 import { useNavigate } from 'react-router-dom'
 import * as Styled from './CardComponent.style'
+import { StyleUtils } from '../../utils/style'
 
 const CardComponent = ({ todo }) => {
     const { id, title, description, status} = todo;
@@ -17,7 +18,7 @@ const CardComponent = ({ todo }) => {
     };
     const changeStatus=()=>{
        
-        //inserir serviço para alter o status do todo
+        //inserir serviço para altera o status do todo
     };
 
     return (
@@ -25,13 +26,13 @@ const CardComponent = ({ todo }) => {
             <Styled.Title>{title}</Styled.Title>
             <Styled.Description>{description}</Styled.Description>
             <Styled.ActionsContainer>
-                <ButtonComponent onClick={handleEdit}>
+                <ButtonComponent bg={'#fffff'} color={StyleUtils.Colors.primary} onClick={handleEdit}>
                     <MdEdit />
                 </ButtonComponent>
-                <ButtonComponent onClick={handleDelete}>
+                <ButtonComponent bg={'#ffffff'} color={StyleUtils.Colors.danger} onClick={handleDelete}>
                     <MdDelete />
                 </ButtonComponent>
-                <ButtonComponent onClick={changeStatus}>
+                <ButtonComponent bg={'#fffff'} color={StyleUtils.Colors.sucess} onClick={changeStatus}>
                     <MdAutorenew />
                 </ButtonComponent>
             </Styled.ActionsContainer>
