@@ -44,9 +44,7 @@ export const ProfileIcon = styled.div`
     height: 32px;
     border-radius: 32px;
     background: #393939;
-
     color: #FFFFFF;
-
     display: flex;
     align-items: center;
     justify-content: center;

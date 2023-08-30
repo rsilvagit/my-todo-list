@@ -17,7 +17,7 @@ export const Layout = () => {
         <Styled.Layout>
             <HeaderComponent />
             <Styled.Main>
-                {location.pathname === '/' || location.pathname.includes('/todo') &&
+                {(location.pathname === '/' || location.pathname.includes('/todo')) &&
                     <Styled.ActionContainer>
                         <ButtonComponent onClick={handleClick}>
                             {location.pathname.includes('/todo') ? 'Ver Tarefas' : 'Nova Tarefa'}
