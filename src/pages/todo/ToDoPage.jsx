@@ -1,23 +1,24 @@
-import { useParams } from "react-router-dom";
-import { FormComponent } from "../../components/form/FormComponent";
-import { useEffect, useState } from "react";
-import { MockUtils } from '../../utils/mock';
-import * as Styled from './ToDoPageStyle';
+import { useParams } from 'react-router-dom'
+import { FormComponent } from '../../components/form/FormComponent'
+import { useEffect, useState } from 'react';
+import { ApiService } from '../../services/ApiService'
+
+import * as Styled from './ToDoPage.style'
 
 export const ToDoPage = () => {
-   const { id } = useParams(); // useParams obtem se a query passada na url
-   const [todo, setTodo] = useState();
-   
-   useEffect(() => {
-    if(id) {
-        setTodo(MockUtils.Todos.find(item => item.id === Number(id)))
-    }
-   }, [])
+  const { id } = useParams();
+  const [todo, setTodo] = useState();
+  const service = new ApiService('tasks');
 
-    return (
-        <Styled.TodoFormContainer>
-           <FormComponent todo={todo}/>
-        </Styled.TodoFormContainer>
-        
-    )
+  useEffect(() => {
+    if(id) {
+      service.Show(id).then(response => setTodo(response))
+    }
+  }, [])
+
+  return (
+    <Styled.TodoFormContainer>
+      <FormComponent todo={todo}/>
+    </Styled.TodoFormContainer>
+  )
 }

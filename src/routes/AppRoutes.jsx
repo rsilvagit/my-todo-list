@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
-import { ToDoPage } from "../pages/todo/ToDoPage"
+import {ToDoPage} from "../../src/pages/todo/ToDoPage"
 import { HomePage } from "../pages/home/HomePage"
 import { ErrorPage } from "../pages/error/ErrorPage"
 import { Layout } from "../layouts/Layout"
