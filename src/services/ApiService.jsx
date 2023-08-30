@@ -2,20 +2,42 @@
 
 const endpoit = 'http://localhost:3000/resource';
 
-const Get = async (resource,) => {
-    return await fetch(BASE_URL.replase('resource', resource))
-}
+export class ApiService {
+    url;
+    headers = { "Content-type": "application/json" }
+
+    constructor() {
+        this.url = url.replace('resource', resource)
+    }
+
+    Get = async () => {
+        return await fetch(this.url);
+    }
+
+    Show = async (id) => {
+        return await fetch(`${this.url}/${id}`);
+    }
 
 
-const Show = async (resource ,id) => {}
-const Create = async (resource, data) => {}
-const Update = async (resource, id, data) => {}
-const Delete = async (resource, id) => {}
+    Create = async (data) => {
+        return await fetch(this.url, {
+            method: 'POST',
+            body: data,
+            headers: this.headers,
 
-export const ApiService = {
-    Get,
-    Show,
-    Create,
-    Update,
-    Delete
+        })
+    }
+    Update = async (id, data) => {
+        return await fetch(`${this.url}/${id}`, {
+            method: 'POST',
+            body: data,
+            headers: this.headers,
+
+        })
+    }
+    Delete = async (id) => {
+        return await fetch(`${this.url}/${id}`, {
+            method: 'DELETE',
+        });
+    }
 }
