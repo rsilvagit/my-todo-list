@@ -62,7 +62,7 @@ export const FormComponent = ({ todo }) => {
                     </Styled.TextArea>
 
                     <Styled.CounterContainer>
-                        { watch('description')?.length || 0} de 50 caracteres
+                        <p>{ watch('description')?.length || 0} de 50 caracteres</p>
                     </Styled.CounterContainer>
                     {errors.description &&
                         <Styled.ErrorText>{errors.description.message}</Styled.ErrorText>
@@ -70,7 +70,7 @@ export const FormComponent = ({ todo }) => {
                 </Styled.InputGroup>
             </Styled.InputsContainer>
 
-            <ButtonComponent type='submit'>Salvar</ButtonComponent>
+            <ButtonComponent type='submit' disabled={Object.keys(errors)?.length}>Salvar</ButtonComponent>
 
         </Styled.FormTodo>
     )

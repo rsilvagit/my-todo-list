@@ -1,7 +1,8 @@
-import { useParams } from "react-router-dom"
-import { FormComponent } from "../../components/form/FormComponent"
+import { useParams } from "react-router-dom";
+import { FormComponent } from "../../components/form/FormComponent";
 import { useEffect, useState } from "react";
-import { MockUtils } from '../../utils/mock'
+import { MockUtils } from '../../utils/mock';
+import * as Styled from './ToDoPageStyle';
 
 export const ToDoPage = () => {
    const { id } = useParams(); // useParams obtem se a query passada na url
@@ -14,10 +15,9 @@ export const ToDoPage = () => {
    }, [])
 
     return (
-        <div className="TodoFormContainer">
-            { id ? 'Existe Tarefa' : 'Não existe tarefa' }
+        <Styled.TodoFormContainer>
            <FormComponent todo={todo}/>
-        </div>
+        </Styled.TodoFormContainer>
         
     )
 }
