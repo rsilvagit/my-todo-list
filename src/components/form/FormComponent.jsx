@@ -22,7 +22,7 @@ export const FormComponent = ({ todo }) => {
             setValue('title', todo.title);
             setValue('description', todo.description);
         }
-    }, []);
+    }, [todo]);
 
     return (
         <Styled.FormTodo onSubmit={handleSubmit(onSubmit)}>
