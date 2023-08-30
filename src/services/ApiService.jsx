@@ -1,43 +1,45 @@
-//Service como função
-
-const endpoit = 'http://localhost:3000/resource';
+const url = 'http://localhost:3000/resource';
 
 export class ApiService {
-    url;
-    headers = { "Content-type": "application/json" }
+  url;
+  headers = { "Content-type": "application/json" }
 
-    constructor() {
-        this.url = url.replace('resource', resource)
-    }
+  constructor(resource) {
+    this.url = url.replace('resource', resource)
+  }
 
-    Get = async () => {
-        return await fetch(this.url);
-    }
-
-    Show = async (id) => {
-        return await fetch(`${this.url}/${id}`);
-    }
-
-
-    Create = async (data) => {
-        return await fetch(this.url, {
-            method: 'POST',
-            body: data,
-            headers: this.headers,
-
-        })
-    }
-    Update = async (id, data) => {
-        return await fetch(`${this.url}/${id}`, {
-            method: 'POST',
-            body: data,
-            headers: this.headers,
-
-        })
-    }
-    Delete = async (id) => {
-        return await fetch(`${this.url}/${id}`, {
-            method: 'DELETE',
-        });
-    }
+  Get = async () => {
+    const response = await fetch(this.url);
+    return response.json();
+  }
+  
+  Show = async (id) => {
+    const response = await fetch(`${this.url}/${id}`);
+    return response.json();
+  }
+  
+  Create = async (data) => {
+    const response = await fetch(this.url, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: this.headers,
+    })
+    return response.json();
+  }
+  
+  Update = async (id, data) => {
+    const response = await fetch(`${this.url}/${id}`, {
+      method: 'PATCH',
+      body: JSON.stringify(data),
+      headers: this.headers,
+    })
+    return response.json();
+  }
+  
+  Delete = async (id) => {
+    const response = await fetch(`${this.url}/${id}`, {
+      method: 'DELETE',
+    });
+    return response.json();
+  }
 }
