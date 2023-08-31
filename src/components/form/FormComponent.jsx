@@ -26,6 +26,8 @@ export const FormComponent = ({ todo }) => {
         navigate('/');
 
     }
+
+    
     useEffect(() => {
         if (todo) {
             setValue('title', todo.title);

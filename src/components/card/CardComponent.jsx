@@ -57,7 +57,7 @@ export const CardComponent = ({ todo }) => {
     };
 
     return (
-        <Styled.CardContainer $status={status}>CardComponent
+        <Styled.CardContainer $status={status}>
             <Styled.Title>{title}</Styled.Title>
             <Styled.Description>{description}</Styled.Description>
             <Styled.ActionsContainer>
