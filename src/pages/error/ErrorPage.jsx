@@ -7,7 +7,7 @@ export const ErrorPage = () => {
         navigate(route)
     }
     return (
-        <Styled.ErrorContainer>
+        <Styled.ErrorContainer data-testid = 'error-page-component'>
             <h3>Opss! Página não encontrada...</h3>
             <p>
                 Não encontramos a página solicitada
