@@ -34,6 +34,6 @@ describe('Test Suite ErrorPage', () => {
     it('Shuld be able render user to home page', ()=>{
         const button = screen.getByText(/Voltar a página inicial/i)
         fireEvent.click(button);
-        expect(mockNavigateTo).toHaveBennCalledWith('/')
+        expect(mockNavigateTo).toHaveBeenCalledWith('/')
     })
 })

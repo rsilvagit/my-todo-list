@@ -3,6 +3,8 @@ import ButtonComponent from '../button/ButtonComponent'
 import { useForm } from 'react-hook-form'
 import PropTypes from 'prop-types'
 import * as Styled from './FormComponent.style'
+import { ApiService } from '../../services/ApiService'
+import { useNavigate } from 'react-router-dom'
 
 
 export const FormComponent = ({ todo }) => {
@@ -13,9 +15,16 @@ export const FormComponent = ({ todo }) => {
         formState: { errors }
     } = useForm();
 
-    const onSubmit = () => {
-        console.log(data);
+    const service = new ApiService('tasks');
+    const navigate = useNavigate();
+
+    const onSubmit = async (data) => {
         //requisição sever
+        todo
+        ? await service.Update(todo.id,data).then(response=>alert(`${response.title} atualizado com sucesso`))
+        : await service.Create(data).then(response=> alert(`${response.title} criado com sucesso`))
+        navigate('/');
+
     }
     useEffect(() => {
         if (todo) {

@@ -1,24 +1,58 @@
 
-import PropTypes from 'prop-types'
 import ButtonComponent from '../button/ButtonComponent'
-import { MdEdit, MdDelete, MdAutorenew } from 'react-icons/md'
+import { MdEdit, MdDelete, MdAutorenew, MdSettingsBackupRestore } from 'react-icons/md'
+import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router-dom'
+
 import * as Styled from './CardComponent.style'
 import { StyleUtils } from '../../utils/style'
+import { ApiService} from '../../services/ApiService'
+import { useContext } from 'react'
+import { TodosContext } from '../../context/TodosContext'
 
-const CardComponent = ({ todo }) => {
-    const { id, title, description, status} = todo;
+
+export const CardComponent = ({ todo }) => {
+    
     const navigate = useNavigate();
+    const { id, title, description, status} = todo;
+    const service = new ApiService('tasks');
 
     const handleEdit= ()=>{
         navigate(`/todo/${id}`);
     };
+
+    const getTasks = async ()=>{
+        service.Get('tasks').then(response=>{
+            setTodos(response);
+        })
+    }
+
     const handleDelete= ()=>{
         //chamada do serviço de deleção
-    };
+        const change = confirm('Deseja realmente DELETAR essa tarefa?')
+
+        if(!change){
+            return;
+        }
+        service.Delete(id).then(()=>{
+        alert(`${title} excluido com sucesso.`);
+        getTasks()
+        })
+    }
     const changeStatus=()=>{
-       
         //inserir serviço para altera o status do todo
+        const change = confirm('Você confirma a atualização do status da tarefa?')
+        if(!change){
+            return;
+        }
+        const data = {
+            status: !status
+        }
+
+        service.Update(id, data).then(response=> {
+            alert(`${response.title} atualizado com sucesso.`);
+            getTasks()
+        })
     };
 
     return (
@@ -49,4 +83,4 @@ CardComponent.propTypes = {
     }).isRequired,
 }
 
-export default CardComponent
+
