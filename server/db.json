@@ -1,21 +1,15 @@
 {
   "tasks": [
     {
-      "title": "Tarefa 2",
-      "description": "Lorem ipsum dolor sit",
-      "status": false,
-      "id": 2
-    },
-    {
-      "title": "Tarefa 3",
-      "description": "Lorem ipsum dolor sit",
-      "status": false,
-      "id": 3
-    },
-    {
       "title": "Elétrica",
       "description": "Substituir Fotocélula",
       "id": 4,
+      "status": false
+    },
+    {
+      "title": "Finalizar Todos",
+      "description": "Finalizar exercício Todos",
+      "id": 5,
       "status": true
     }
   ]

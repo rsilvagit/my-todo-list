@@ -15,6 +15,7 @@ export const CardComponent = ({ todo }) => {
     
     const navigate = useNavigate();
     const { id, title, description, status} = todo;
+    const {setTodos} = useContext(TodosContext);
     const service = new ApiService('tasks');
 
     const handleEdit= ()=>{

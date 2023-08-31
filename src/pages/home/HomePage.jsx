@@ -7,7 +7,7 @@ import { TodosContext } from '../../context/TodosContext';
 import * as Styled from "./HomePage.Style";
 
 export const HomePage = () => {
-    const [todos, setTodos] = useContext(TodosContext);
+    const {todos, setTodos} = useContext(TodosContext);
     const service = new ApiService('tasks');
 
     const getTasks = async () => {
