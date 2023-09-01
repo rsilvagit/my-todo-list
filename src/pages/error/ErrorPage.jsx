@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import ButtonComponent  from "../../components/button/ButtonComponent"
+import {ButtonComponent}  from "../../components/button/ButtonComponent"
 
 import * as Styled from "./ErrorPage.Style"
 

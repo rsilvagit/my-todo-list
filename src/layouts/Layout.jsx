@@ -1,7 +1,7 @@
 import React from 'react'
 import { Outlet, useNavigate, useLocation } from 'react-router-dom'
 import { HeaderComponent } from '../components/header/HeaderComponent'
-import ButtonComponent from '../components/button/ButtonComponent'
+import {ButtonComponent} from '../components/button/ButtonComponent'
 import * as Styled from "./AppLayout.style";
 
 export const Layout = () => {

@@ -1,5 +1,5 @@
 
-import ButtonComponent from '../button/ButtonComponent'
+import {ButtonComponent} from '../button/ButtonComponent'
 import { MdEdit, MdDelete, MdAutorenew, MdSettingsBackupRestore } from 'react-icons/md'
 import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router-dom'

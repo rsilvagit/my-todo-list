@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import ButtonComponent from '../button/ButtonComponent'
+import {ButtonComponent} from '../button/ButtonComponent'
 import { useForm } from 'react-hook-form'
 import PropTypes from 'prop-types'
 import * as Styled from './FormComponent.style'
