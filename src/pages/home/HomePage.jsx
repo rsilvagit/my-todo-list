@@ -21,8 +21,8 @@ export const HomePage = () => {
     },[]);
 
     return (
-        <Styled.HomeContainer>
-            <Styled.CardsContainer>
+        <Styled.HomeContainer data-testid='HomePage-Component'>
+            <Styled.CardsContainer data-testid='Card-Container'>
                  {todos.map(todo => 
                     <CardComponent todo={todo} key={todo.id} />
                 )}
