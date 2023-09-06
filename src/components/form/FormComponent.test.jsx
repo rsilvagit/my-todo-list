@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom';
 import { FormComponent } from './FormComponent';
 import { vi } from 'vitest';
+import { MockUtils } from '../../utils/mock';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
@@ -8,11 +9,12 @@ describe('FormComponent', () => {
   let useFormMock;
   let ApiServiceMock;
   let useNavigateMock;
+  const todoMock = MockUtils.Todos[0];
 
   beforeEach(() => {
     useFormMock = vi.fn().mockReturnValue({
       register: vi.fn(),
-      handleSubmit: vi.fn((onsubmit)=>onsubmit({title: 'Test Title', description:'Test Description'})),
+      handleSubmit: vi.fn(),
       setValue: vi.fn(),
       watch: vi.fn(),
       formState: { errors: {} }
@@ -58,12 +60,12 @@ describe('FormComponent', () => {
     // Mock the necessary dependencies
     useFormMock.mockReturnValue({
       register: vi.fn(),
-      handleSubmit: vi.fn((onSubmit) => onSubmit({ title: 'Test Title', description: 'Test Description' })),
+      handleSubmit: vi.fn((onSubmit) => onSubmit({todoMock})),
       setValue: vi.fn(),
       watch: vi.fn(),
       formState: { errors: {} }
     });
-    const createMock = vi.fn().mockResolvedValue({ title: 'Test Title', description: 'Test Description' });
+    const createMock = vi.fn().mockResolvedValue({ todoMock });
     ApiServiceMock.mockReturnValue({
       Create: createMock,
       Update: vi.fn()
@@ -79,7 +81,7 @@ describe('FormComponent', () => {
 
     // Assert that the form is submitted and a new task is created
     await waitFor(() => {
-      expect(createMock).toHaveBeenCalledWith({ title: 'Test Title', description: 'Test Description' });
+      expect(createMock).toHaveBeenCalledWith({ todoMock });
       expect(alert).toHaveBeenCalledWith('Test Title criado com sucesso');
     });
   });
@@ -89,12 +91,12 @@ describe('FormComponent', () => {
     // Mock the necessary dependencies
     useFormMock.mockReturnValue({
       register: vi.fn(),
-      handleSubmit: vi.fn((onSubmit) => onSubmit({ title: 'Test Title', description: 'Test Description' })),
+      handleSubmit: vi.fn((onSubmit) => onSubmit({ todoMock })),
       setValue: vi.fn(),
       watch: vi.fn(),
       formState: { errors: {} }
     });
-    const updateMock = vi.fn().mockResolvedValue({ title: 'Test Title', description: 'Test Description' });
+    const updateMock = vi.fn().mockResolvedValue({ todoMock });
     ApiServiceMock.mockReturnValue({
       Create: vi.fn(),
       Update: updateMock
@@ -102,7 +104,7 @@ describe('FormComponent', () => {
 
     // Render the FormComponent with the necessary props and mocks
     const { getByText } = render(
-      <FormComponent todo={{ id: 1, title: 'Existing Title', description: 'Existing Description' }} />, {wrapper:Router}
+      <FormComponent todo={{ todoMock }} />, {wrapper:Router}
     );
 
     // Submit the form
@@ -110,7 +112,7 @@ describe('FormComponent', () => {
 
     // Assert that the form is submitted and the existing task is updated
     await waitFor(() => {
-      expect(updateMock).toHaveBeenCalledWith(1, { title: 'Test Title', description: 'Test Description' });
+      expect(updateMock).toHaveBeenCalledWith(1, { todoMock });
       expect(alert).toHaveBeenCalledWith('Test Title atualizado com sucesso');
     });
   });
