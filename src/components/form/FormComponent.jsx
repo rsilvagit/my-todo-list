@@ -37,14 +37,14 @@ export const FormComponent = ({ todo }) => {
 
     return (
         <Styled.FormTodo onSubmit={handleSubmit(onSubmit)}>
-            <Styled.FormTitle>
+            <Styled.FormTitle data-testid='title'>
                 {!todo ? 'Criar uma tarefa' : `Editar tarefa ${todo.title}`}
             </Styled.FormTitle>
 
             <Styled.InputsContainer>
 
                 <Styled.InputGroup>
-                    <Styled.Label htmlFor="title">Título</Styled.Label>
+                    <Styled.Label htmlFor="title" >Título</Styled.Label>
                     <Styled.Input
                         type='text'
                         id='title'
