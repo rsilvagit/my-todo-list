@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { FormComponent } from './FormComponent';
 import { vi } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 describe('FormComponent', () => {
@@ -12,13 +12,13 @@ describe('FormComponent', () => {
   beforeEach(() => {
     useFormMock = vi.fn().mockReturnValue({
       register: vi.fn(),
-      handleSubmit: vi.fn(),
+      handleSubmit: vi.fn((onsubmit)=>onsubmit({title: 'Test Title', description:'Test Description'})),
       setValue: vi.fn(),
       watch: vi.fn(),
       formState: { errors: {} }
     });
     ApiServiceMock = vi.fn().mockReturnValue({
-      Create: vi.fn(),
+      Create: vi.fn(). mockResolvedValue({title: 'Test Title', description:'Test Description'}),
       Update: vi.fn()
     });
     useNavigateMock = vi.fn();
@@ -33,8 +33,8 @@ describe('FormComponent', () => {
 
     // Assert that the form component renders with a title and input fields
     expect(getByTestId('title')).toBeInTheDocument();
-    expect(getByLabelText(/'Título'/i)).toBeInTheDocument();
-    expect(getByLabelText(/'Descrição'/i)).toBeInTheDocument();
+    expect(getByLabelText(/Título/i)).toBeInTheDocument();
+    expect(getByLabelText(/Descrição/i)).toBeInTheDocument();
   });
 
   // Tests that the form component allows the user to input a title and description
@@ -45,12 +45,12 @@ describe('FormComponent', () => {
     );
 
     // Simulate user inputting a title and description
-    fireEvent.change(getByLabelText('Título'), { target: { value: 'Test Title' } });
-    fireEvent.change(getByLabelText('Descrição'), { target: { value: 'Test Description' } });
+    fireEvent.change(getByLabelText(/Título/i), { target: { value: 'Test Title' } });
+    fireEvent.change(getByLabelText(/Descrição/i), { target: { value: 'Test Description' } });
 
     // Assert that the user input is reflected in the form component
-    expect(getByLabelText('Título').value).toBe('Test Title');
-    expect(getByLabelText('Descrição').value).toBe('Test Description');
+    expect(getByLabelText(/Título/i).value).toBe('Test Title');
+    expect(getByLabelText(/Descrição/i).value).toBe('Test Description');
   });
 
   // Tests that the form component submits the form and creates a new task

@@ -57,7 +57,7 @@ export const FormComponent = ({ todo }) => {
                     }
                 </Styled.InputGroup>
                 <Styled.InputGroup>
-                    <Styled.Label>Descrição</Styled.Label>
+                    <Styled.Label htmlFor="description">Descrição</Styled.Label>
                     <Styled.TextArea
                         id="description"
                         cols="30"
